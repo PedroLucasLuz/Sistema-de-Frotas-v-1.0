@@ -1,0 +1,13 @@
+{
+    "name": "pedro/sistema-de-frotas-v-1.0",
+    "description": "Sistema de gerenciamento de frotas e veículos para prefeituras",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pedro Lucas Luz Costa"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
