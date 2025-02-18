@@ -10,11 +10,10 @@ $prefeituras = $prefeitura->listarPrefeituras();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $dados = [
-        'cod_prefeitura' => $_POST['cod_prefeitura'],
-        'cod_secretaria' => $_POST['cod_prefeitura'],
         'nome'           => $_POST['nome'],
         'telefone'       => $_POST['telefone'],
-        'email'          => $_POST['email']
+        'email'          => $_POST['email'],
+        'cod_prefeitura' => $_POST['cod_prefeitura']
     ];
 
     if (isset($_POST['editar'])) {
@@ -51,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <title><?php echo $secretariaEditada ? "Editar Secretaria" : "Cadastrar secretaria"; ?></title>
     <link rel="stylesheet" href="/Sistema-de-Frotas-v-1.0/public/css/Addedit.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -58,14 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h1 class="form-title"><?php echo $secretariaEditada ? "Editar secretaria" : "Cadastrar secretaria"; ?></h1>
 
         <form action="addedit.php" method="POST" class="form">
-            <?php if ($secretariaEditada): ?>
-                <input type="hidden" name="cod_secretaria" value="<?= $secretariaEditada['cod_secretaria'] ?>">
-            <?php else: ?>
-                <div class="form-group">
-                    <label for="cod_secretaria">Código da secretaria:</label>
-                    <input type="text" name="cod_secretaria" required class="form-control">
-                </div>
-            <?php endif; ?>
 
             <div class="form-group">
                 <label for="nome">Nome:</label>

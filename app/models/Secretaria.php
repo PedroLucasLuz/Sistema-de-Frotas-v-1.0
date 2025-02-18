@@ -9,11 +9,10 @@ class Secretaria {
     }
 
     public function cadastrarSecretaria(array $dados): bool {
-        $sql = "INSERT INTO secretaria (cod_secretaria, nome, telefone, email, cod_prefeitura) 
-                VALUES (:cod_secretaria, :nome, :telefone, :email, :cod_prefeitura)";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([
-            ':cod_secretaria' => $dados['cod_secretaria'],
+        $sql = "INSERT INTO secretaria (nome, telefone, email, cod_prefeitura) 
+                VALUES ( :nome, :telefone, :email, :cod_prefeitura)";
+        $stmt = $this->db->prepare(query: $sql);
+        return $stmt->execute(params: [
             ':nome'           => $dados['nome'],
             ':telefone'       => $dados['telefone'],
             ':email'          => $dados['email'],
@@ -23,8 +22,8 @@ class Secretaria {
     
     public function editarSecretaria(array $dados): bool {
         $sql = "SELECT COUNT(*) FROM secretaria WHERE cod_secretaria = :cod_secretaria";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([":cod_secretaria" => $dados['cod_secretaria']]);
+        $stmt = $this->db->prepare(query: $sql);
+        $stmt->execute(params: [":cod_secretaria" => $dados['cod_secretaria']]);
         $count = $stmt->fetchColumn();
 
         if ($count == 0) {
@@ -34,8 +33,8 @@ class Secretaria {
         $sql = "UPDATE secretaria 
                 SET nome = :nome, telefone = :telefone, email = :email, cod_prefeitura = :cod_prefeitura
                 WHERE cod_secretaria = :cod_secretaria";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([
+        $stmt = $this->db->prepare(query: $sql);
+        return $stmt->execute(params: [
             ':cod_prefeitura' => $dados['cod_prefeitura'],
             ':cod_secretaria' => $dados['cod_secretaria'],
             ':nome'           => $dados['nome'],

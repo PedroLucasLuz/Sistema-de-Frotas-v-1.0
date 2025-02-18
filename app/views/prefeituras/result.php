@@ -2,11 +2,10 @@
 
 <?php if (!empty($prefeituras)): ?>
     <table border="1" cellpadding="10" style="width:100%; border-collapse: collapse;">
-        <tr><th>Código</th><th>Nome</th><th>Endereço</th><th>Telefone</th><th>Email</th><th>Site</th><th>CNPJ</th><th>Ação</th></tr>
+        <tr><th>Nome</th><th>Endereço</th><th>Telefone</th><th>Email</th><th>Site</th><th>CNPJ</th><th>Ação</th></tr>
 
         <?php foreach ($prefeituras as $pref): ?>
             <tr>
-                <td><?= $pref['cod_prefeitura'] ?></td>
                 <td><?= $pref['nome'] ?></td>
                 <td><?= $pref['endereco'] ?></td>
                 <td><?= $pref['telefone'] ?></td>

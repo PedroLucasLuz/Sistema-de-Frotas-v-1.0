@@ -9,12 +9,12 @@ class Veiculo {
     }
 
     public function cadastrarVeiculo(array $dados): bool {
-        $sql = "INSERT INTO veiculo (cod_veiculo, placa, tipo, modelo, ano, status, cod_secretaria, cod_prefeitura) 
-                VALUES (:cod_veiculo, :placa, :tipo, :modelo, :ano, :status, :cod_secretaria, :cod_prefeitura)";
+        $sql = "INSERT INTO veiculo (placa, tipo, modelo, ano, status, cod_secretaria, cod_prefeitura) 
+                VALUES (:placa, :tipo, :modelo, :ano, :status, :cod_secretaria, :cod_prefeitura)";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([
-            ':cod_secretaria' => $dados['cod_secretaria'],
             ':cod_prefeitura' => $dados['cod_prefeitura'],
+            ':cod_secretaria' => $dados['cod_secretaria'],
             'placa'           => $dados['placa'],
             'tipo'            => $dados['tipo'],
             'modelo'          => $dados['modelo'],

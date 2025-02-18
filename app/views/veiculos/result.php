@@ -2,11 +2,10 @@
 
 <?php if (!empty($veiculos)): ?>
     <table border="1" cellpadding="10" style="width:100%; border-collapse: collapse;">
-        <tr><th>Código</th><th>Placa</th><th>Tipo</th><th>Modelo</th><th>Ano</th><th>Status</th><th>Secretaria</th><th>Prefeitura</th><th>Ação</th></tr>
+        <tr><th>Placa</th><th>Tipo</th><th>Modelo</th><th>Ano</th><th>Status</th><th>Secretaria</th><th>Prefeitura</th><th>Ação</th></tr>
 
         <?php foreach ($veiculos as $veiculo): ?>
             <tr>
-                <td><?= $veiculo['cod_veiculo'] ?></td>
                 <td><?= $veiculo['placa'] ?></td>
                 <td><?= $veiculo['tipo'] ?></td>
                 <td><?= $veiculo['modelo'] ?></td>

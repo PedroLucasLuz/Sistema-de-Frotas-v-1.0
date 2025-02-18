@@ -2,11 +2,10 @@
 
 <?php if (!empty($secretarias)): ?>
     <table border="1" cellpadding="10" style="width:100%; border-collapse: collapse;">
-        <tr><th>Código</th><th>Nome</th><th>Telefone</th><th>Email</th><th>Prefeitura</th><th>Ação</th></tr>
+        <tr><th>Nome</th><th>Telefone</th><th>Email</th><th>Prefeitura</th><th>Ação</th></tr>
 
         <?php foreach ($secretarias as $sec): ?>
             <tr>
-                <td><?= $sec['cod_secretaria'] ?></td>
                 <td><?= $sec['nome'] ?></td>
                 <td><?= $sec['telefone'] ?></td>
                 <td><?= $sec['email'] ?></td>
