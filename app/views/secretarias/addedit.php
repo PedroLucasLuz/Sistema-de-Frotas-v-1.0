@@ -10,6 +10,7 @@ $prefeituras = $prefeitura->listarPrefeituras();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $dados = [
+        'cod_secretaria' => $_POST['cod_secretaria'],
         'nome'           => $_POST['nome'],
         'telefone'       => $_POST['telefone'],
         'email'          => $_POST['email'],
@@ -58,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h1 class="form-title"><?php echo $secretariaEditada ? "Editar secretaria" : "Cadastrar secretaria"; ?></h1>
 
         <form action="addedit.php" method="POST" class="form">
+            <input type="hidden" name="cod_secretaria" value="<?= $secretariaEditada['cod_secretaria'] ?>">
 
             <div class="form-group">
                 <label for="nome">Nome:</label>

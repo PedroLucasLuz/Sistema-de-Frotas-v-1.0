@@ -11,10 +11,10 @@ class Veiculo {
     public function cadastrarVeiculo(array $dados): bool {
         $sql = "INSERT INTO veiculo (placa, tipo, modelo, ano, status, cod_secretaria, cod_prefeitura) 
                 VALUES (:placa, :tipo, :modelo, :ano, :status, :cod_secretaria, :cod_prefeitura)";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([
-            ':cod_prefeitura' => $dados['cod_prefeitura'],
-            ':cod_secretaria' => $dados['cod_secretaria'],
+        $stmt = $this->db->prepare(query: $sql);
+        return $stmt->execute(params: [
+            'cod_prefeitura' => $dados['cod_prefeitura'],
+            'cod_secretaria' => $dados['cod_secretaria'],
             'placa'           => $dados['placa'],
             'tipo'            => $dados['tipo'],
             'modelo'          => $dados['modelo'],
@@ -25,8 +25,8 @@ class Veiculo {
 
     public function editarVeiculo(array $dados): bool {
         $sql = "SELECT COUNT(*) FROM veiculo WHERE cod_veiculo = :cod_veiculo";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([":cod_veiculo" => $dados['cod_veiculo']]);
+        $stmt = $this->db->prepare(query: $sql);
+        $stmt->execute(params: [":cod_veiculo" => $dados['cod_veiculo']]);
         $count = $stmt->fetchColumn();
 
         if ($count == 0) {
@@ -36,10 +36,10 @@ class Veiculo {
         $sql = "UPDATE veiculo 
                 SET placa = :placa, tipo = :tipo, modelo = :modelo, ano = :ano, status = :status, cod_secretaria = :cod_secretaria, cod_prefeitura = :cod_prefeitura
                 WHERE cod_veiculo = :cod_veiculo";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([
-            ':cod_secretaria' => $dados['cod_secretaria'],
-            ':cod_prefeitura' => $dados['cod_prefeitura'],
+        $stmt = $this->db->prepare(query: $sql);
+        return $stmt->execute(params: [
+            'cod_secretaria' => $dados['cod_secretaria'],
+            'cod_prefeitura' => $dados['cod_prefeitura'],
             'cod_veiculo'     => $dados['cod_veiculo'],
             'placa'           => $dados['placa'],
             'tipo'            => $dados['tipo'],
@@ -51,9 +51,9 @@ class Veiculo {
 
     public function buscarVeiculo(int $cod_veiculo): ?array {
         $sql = "SELECT * FROM veiculo WHERE cod_veiculo = :cod_veiculo";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([":cod_veiculo" => $cod_veiculo]);
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->db->prepare(query: $sql);
+        $stmt->execute(params: [":cod_veiculo" => $cod_veiculo]);
+        $resultado = $stmt->fetch(mode: PDO::FETCH_ASSOC);
         return $resultado ?: null;
     }
 
@@ -63,10 +63,10 @@ class Veiculo {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function excluirPrefeitura(int $cod_veiculo): bool {
+    public function excluirVeiculo(int $cod_veiculo): bool {
         $sql = "DELETE FROM veiculo WHERE cod_veiculo = :cod_veiculo";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([":cod_veiculo" => $cod_veiculo]);
+        $stmt = $this->db->prepare(query: $sql);
+        return $stmt->execute(params: [":cod_veiculo" => $cod_veiculo]);
     }
 
 }

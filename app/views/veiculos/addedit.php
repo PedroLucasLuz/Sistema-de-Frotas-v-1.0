@@ -4,6 +4,7 @@ require_once __DIR__ . "/../../models/Secretaria.php";
 require_once __DIR__ . "/../../models/Prefeitura.php";
 require_once __DIR__ . "/../../models/Veiculo.php";
 
+
 $veiculo    = new Veiculo();
 $secretaria = new Secretaria();
 $prefeitura = new Prefeitura();
@@ -13,9 +14,9 @@ $veiculoEditado = null;
 $prefeituras = $prefeitura->listarPrefeituras();
 $secretarias  = $secretaria->listarSecretarias();
 
-// Editar aqui
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $dados = [
+        'cod_veiculo'    => $_POST['cod_veiculo'],
         'placa'          => $_POST['placa'],
         'tipo'           => $_POST['tipo'],
         'modelo'         => $_POST['modelo'],
@@ -69,6 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </h1>
 
         <form action="addedit.php" method="POST" class="form">
+            <input type="hidden" name="cod_veiculo" value="<?= $veiculoEditado['cod_veiculo'] ?>">
+
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="tipo" class="form-label">Tipo:</label>

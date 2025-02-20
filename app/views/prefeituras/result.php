@@ -13,7 +13,7 @@
                 <td><?= $pref['site'] ?></td>
                 <td><?= $pref['cnpj'] ?></td>
                 <td>
-                    <form action="../app/views/prefeituras/delete.php" method="POST" style="display:inline;">
+                    <form action="../app/core/delete_prefeitura.php" method="POST" style="display:inline;">
                         <input type="hidden" name="cod_prefeitura" value="<?= $pref['cod_prefeitura'] ?>">
                         <button type="submit" class="btn-delete" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
                     </form>

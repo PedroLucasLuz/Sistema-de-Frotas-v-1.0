@@ -11,7 +11,7 @@
                 <td><?= $sec['email'] ?></td>
                 <td><?= $prefeituraNomes[$sec['cod_prefeitura']] ?? 'Desconhecida' ?></td> 
                 <td>
-                    <form action="../app/views/secretarias/delete.php" method="POST" style="display:inline;">
+                    <form action="../app/core/delete_secretaria.php" method="POST" style="display:inline;">
                         <input type="hidden" name="cod_secretaria" value="<?= $sec['cod_secretaria'] ?>">
                         <button type="submit" class="btn-delete" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
                     </form>

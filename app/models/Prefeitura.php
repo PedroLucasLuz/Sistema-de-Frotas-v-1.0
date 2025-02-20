@@ -51,9 +51,9 @@ class Prefeitura {
 
     public function buscarPrefeitura(int $cod_prefeitura): ?array {
         $sql = "SELECT * FROM prefeitura WHERE cod_prefeitura = :cod_prefeitura";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([":cod_prefeitura" => $cod_prefeitura]);
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->db->prepare(query: $sql);
+        $stmt->execute(params: [":cod_prefeitura" => $cod_prefeitura]);
+        $resultado = $stmt->fetch(mode: PDO::FETCH_ASSOC);
         return $resultado ?: null;
     }
 
